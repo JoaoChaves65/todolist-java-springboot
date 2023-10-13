@@ -1,4 +1,4 @@
-package br.com.joaomarcos.todolist.user.todolist.task;
+package br.com.joaomarcos.todolist.task;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +15,7 @@ public class TaskController {
 
     @PostMapping("/")
     public TaskModel create(@RequestBody TaskModel taskModel){
+        System.out.println("Chegou no controller");
         var task = this.taskRepository.save(taskModel);
         return task;
     }
