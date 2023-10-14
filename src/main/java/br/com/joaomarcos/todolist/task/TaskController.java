@@ -28,8 +28,8 @@ public class TaskController {
         var currentDate = LocalDateTime.now();
         //14/10/2023 - Atual
         //13/10/2023 - startAt
-        if(currentDate.isAfter(taskModel.getStartAt())){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("A data de início deve ser maior do que a data atual");
+        if(currentDate.isAfter(taskModel.getStartAt()) || currentDate.isAfter(taskModel.getEndAt())){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("A data de início / data de término deve ser maior do que a data atual");
         }
 
         var task = this.taskRepository.save(taskModel);
